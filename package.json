@@ -1,0 +1,14 @@
+{
+  "name": "react-corkboard",
+  "version": "1.0.0",
+  "description": "A web application for writing and saving notes to a corkboard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Martin",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  }
+}

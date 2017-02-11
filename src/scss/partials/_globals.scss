@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5 {
     font-family: $serif-font-stack;
 }
 
+button {
+    cursor: pointer;
+}
+
 .sr-only {
     position:absolute;
     left:-10000px;
@@ -17,6 +21,6 @@ h1, h2, h3, h4, h5 {
     overflow:hidden;
 }
 
-button {
-    cursor: pointer;
+.hidden {
+  display: none;
 }

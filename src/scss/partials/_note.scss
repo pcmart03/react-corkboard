@@ -6,8 +6,8 @@
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: center;
-  @media (max-width: 375px) {
-    flex-direction: column;
+  @media (max-width: 380px) {
+    flex-direction: column-reverse;
   }
 }
 
@@ -21,6 +21,12 @@
   color: $primary-color-text;
   &:hover {
     color: $primary-color;
+  }
+  @media (max-width: 380px) {
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
   }
 }
 
@@ -76,4 +82,10 @@
       } //button
     } // note controls
   } // note-inner
+
+  @media (max-width: 380px){
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 } // note

@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const APP_DIR = path.resolve(__dirname, 'src/js/');
 const SASS_DIR = path.resolve(__dirname, 'src/scss/');

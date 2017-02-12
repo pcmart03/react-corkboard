@@ -1,7 +1,7 @@
 require('../scss/index.scss');
 
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import NoteContainer from './components/note-container.jsx'
 
 class App extends React.Component {

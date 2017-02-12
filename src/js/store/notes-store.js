@@ -66,16 +66,13 @@ class NoteStore extends EventEmitter {
             isNew: "false"
         };
         this._saveNote(id, item);
-        console.log("saved")
     }
 
     deleteNote(id){
         this.storage.removeItem(id);
-        console.log("deleted")
     }
 
     handleActions(action){
-        console.log("action received")
         switch(action.type){
             case "CREATE_NOTE":
                 this.createNote();

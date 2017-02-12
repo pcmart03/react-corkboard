@@ -61,7 +61,7 @@ class NoteStore extends EventEmitter {
     saveEdits(id, text){
         const item = {
             id,
-            text,
+            text: text.replace(/(<([^>]+)>)/ig,""),
             editMode: "false",
             isNew: "false"
         };

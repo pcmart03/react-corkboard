@@ -9,3 +9,4 @@ You may [view a working demo of the app here.](https://pcmart03.github.io/react-
 - Note color options
 - Delete all Notes Button
 - Add categories and filters
+- markdown formatting of notes

@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Actions from '../actions/actions.js';
 
 export default class NoteControls extends React.Component {
     constructor(props) {
@@ -7,11 +8,11 @@ export default class NoteControls extends React.Component {
         this.deleteNote = this.deleteNote.bind(this);
     }
     editNote() {
-        console.log("edit");
+        Actions.editNote(this.props.id);
     }
 
     deleteNote() {
-        console.log("delete");
+        Actions.deleteNote(this.props.id);
     }
 
     render() {

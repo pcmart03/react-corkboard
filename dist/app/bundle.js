@@ -9511,7 +9511,7 @@ var NoteContainer = function (_React$Component) {
             var notes = this.state.notes;
 
             var noteComponents = notes.map(function (note) {
-                if (note.editMode === false) {
+                if (note.editMode === "false") {
                     return _react2.default.createElement(_note2.default, { key: note.id, text: note.text, id: note.id });
                 } else {
                     return _react2.default.createElement(_noteEdit2.default, { key: note.id, text: note.text, id: note.id, isNew: note.isNew });
@@ -9584,6 +9584,12 @@ var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _actions = __webpack_require__(193);
+
+var Actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9598,23 +9604,32 @@ var AddNoteButton = function (_React$Component) {
     function AddNoteButton() {
         _classCallCheck(this, AddNoteButton);
 
-        return _possibleConstructorReturn(this, (AddNoteButton.__proto__ || Object.getPrototypeOf(AddNoteButton)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (AddNoteButton.__proto__ || Object.getPrototypeOf(AddNoteButton)).call(this));
+
+        _this.createNote = _this.createNote.bind(_this);
+        return _this;
     }
 
     _createClass(AddNoteButton, [{
-        key: "render",
+        key: 'createNote',
+        value: function createNote() {
+            Actions.createNote();
+            console.log("clicked");
+        }
+    }, {
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "add-note-container" },
+                'div',
+                { className: 'add-note-container' },
                 _react2.default.createElement(
-                    "button",
-                    { type: "button", className: "add-note" },
-                    _react2.default.createElement("i", { className: "fa fa-plus-square-o", "aria-hidden": "true" }),
+                    'button',
+                    { type: 'button', className: 'add-note', onClick: this.createNote },
+                    _react2.default.createElement('i', { className: 'fa fa-plus-square-o', 'aria-hidden': 'true' }),
                     _react2.default.createElement(
-                        "span",
-                        { className: "sr-only" },
-                        "create note"
+                        'span',
+                        { className: 'sr-only' },
+                        'create note'
                     )
                 )
             );
@@ -9643,6 +9658,12 @@ var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _actions = __webpack_require__(193);
+
+var Actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9665,39 +9686,39 @@ var NoteControls = function (_React$Component) {
     }
 
     _createClass(NoteControls, [{
-        key: "editNote",
+        key: 'editNote',
         value: function editNote() {
-            console.log("edit");
+            Actions.editNote(this.props.id);
         }
     }, {
-        key: "deleteNote",
+        key: 'deleteNote',
         value: function deleteNote() {
-            console.log("delete");
+            Actions.deleteNote(this.props.id);
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "note-controls" },
+                'div',
+                { className: 'note-controls' },
                 _react2.default.createElement(
-                    "button",
-                    { role: "button", onClick: this.editNote },
-                    _react2.default.createElement("i", { className: "fa fa-pencil", "aria-hidden": "true" }),
+                    'button',
+                    { role: 'button', onClick: this.editNote },
+                    _react2.default.createElement('i', { className: 'fa fa-pencil', 'aria-hidden': 'true' }),
                     _react2.default.createElement(
-                        "span",
-                        { className: "sr-only" },
-                        "Edit"
+                        'span',
+                        { className: 'sr-only' },
+                        'Edit'
                     )
                 ),
                 _react2.default.createElement(
-                    "button",
-                    { role: "delete", onClick: this.deleteNote },
-                    _react2.default.createElement("i", { className: "fa fa-trash-o", "aria-hidden": "true" }),
+                    'button',
+                    { role: 'delete', onClick: this.deleteNote },
+                    _react2.default.createElement('i', { className: 'fa fa-trash-o', 'aria-hidden': 'true' }),
                     _react2.default.createElement(
-                        "span",
-                        { className: "sr-only" },
-                        "Delete"
+                        'span',
+                        { className: 'sr-only' },
+                        'Delete'
                     )
                 )
             );
@@ -9726,6 +9747,12 @@ var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _actions = __webpack_require__(193);
+
+var Actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9752,17 +9779,45 @@ var EditControls = function (_React$Component) {
     _createClass(EditControls, [{
         key: 'isNew',
         value: function isNew() {
-            return this.props.isNew ? this.deleteItem : this.cancelChange;
+            if (this.props.isNew === "true") {
+                return _react2.default.createElement(
+                    'button',
+                    { role: 'cancel', onClick: this.deleteItem },
+                    _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' }),
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'sr-only' },
+                        'Cancel'
+                    )
+                );
+            } else {
+                return _react2.default.createElement(
+                    'button',
+                    { role: 'cancel', onClick: this.cancelChange },
+                    _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' }),
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'sr-only' },
+                        'Cancel'
+                    )
+                );
+            }
         }
     }, {
         key: 'deleteItem',
-        value: function deleteItem() {}
+        value: function deleteItem() {
+            Actions.deleteNote(this.props.id);
+        }
     }, {
         key: 'cancelChange',
-        value: function cancelChange() {}
+        value: function cancelChange() {
+            Actions.cancelEdit(this.props.id);
+        }
     }, {
         key: 'saveChange',
-        value: function saveChange() {}
+        value: function saveChange() {
+            Actions.saveEdits(this.props.id, this.props.text);
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -9779,16 +9834,7 @@ var EditControls = function (_React$Component) {
                         'Save'
                     )
                 ),
-                _react2.default.createElement(
-                    'button',
-                    { role: 'cancel', onClick: this.isNew },
-                    _react2.default.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' }),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'sr-only' },
-                        'Cancel'
-                    )
-                )
+                this.isNew()
             );
         }
     }]);
@@ -9859,7 +9905,7 @@ var NoteEdit = function (_React$Component) {
                         null,
                         _react2.default.createElement('textarea', { autoFocus: true, value: this.state.text, onChange: this.handleChange, rows: '5', cols: '31', maxLength: '150' })
                     ),
-                    _react2.default.createElement(_noteEditControls2.default, { id: this.props.id, isNew: this.props.isNew })
+                    _react2.default.createElement(_noteEditControls2.default, { id: this.props.id, isNew: this.props.isNew, text: this.state.text })
                 )
             );
         }
@@ -9946,6 +9992,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _appDispatcher = __webpack_require__(190);
+
+var _appDispatcher2 = _interopRequireDefault(_appDispatcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -9962,35 +10014,111 @@ var NoteStore = function (_EventEmitter) {
 
         var _this = _possibleConstructorReturn(this, (NoteStore.__proto__ || Object.getPrototypeOf(NoteStore)).call(this));
 
-        _this.notes = [{
-            id: 1,
-            text: "This is a note.",
-            editMode: false,
-            isNew: false
-        }, {
-            id: 2,
-            text: "this is another note",
-            editMode: false,
-            isNew: false
-        }];
+        _this.storage = window.localStorage;
+        _this.notes = [];
         return _this;
     }
 
     _createClass(NoteStore, [{
+        key: "_loadNotes",
+        value: function _loadNotes() {
+            var _this2 = this;
+
+            var item = void 0;
+            this.notes = [];
+            if (this.storage.length > 0) {
+                Object.keys(this.storage).forEach(function (key, index) {
+                    if (key.includes("note")) {
+                        item = _this2.storage.getItem(key);
+                        _this2.notes.push(JSON.parse(item));
+                    }
+                });
+            }
+        }
+    }, {
+        key: "_getNote",
+        value: function _getNote(id) {
+            return JSON.parse(this.storage.getItem(id));
+        }
+    }, {
+        key: "_saveNote",
+        value: function _saveNote(id, item) {
+            this.storage.setItem(id, JSON.stringify(item));
+        }
+    }, {
         key: "getAll",
         value: function getAll() {
+            this._loadNotes();
             return this.notes;
         }
     }, {
         key: "createNote",
-        value: function createNote(text) {
-            var id = Date.now();
-            this.notes.push({
+        value: function createNote() {
+            console.log("dispatched");
+            var id = "note" + String(Date.now());
+            var note = {
+                id: id,
+                text: "",
+                editMode: "true",
+                isNew: "true"
+            };
+            this._saveNote(id, note);
+        }
+    }, {
+        key: "editNote",
+        value: function editNote(id) {
+            var item = this._getNote(id);
+            item.editMode = "true";
+            this._saveNote(id, item);
+        }
+    }, {
+        key: "cancelEdit",
+        value: function cancelEdit(id) {
+            var item = this._getNote(id);
+            item.editMode = "false";
+            this._saveNote(id, item);
+        }
+    }, {
+        key: "saveEdits",
+        value: function saveEdits(id, text) {
+            var item = {
                 id: id,
                 text: text,
-                editMode: false,
-                isNew: true
-            });
+                editMode: "false",
+                isNew: "false"
+            };
+            this._saveNote(id, item);
+            console.log("saved");
+        }
+    }, {
+        key: "deleteNote",
+        value: function deleteNote(id) {
+            this.storage.removeItem(id);
+            console.log("deleted");
+        }
+    }, {
+        key: "handleActions",
+        value: function handleActions(action) {
+            console.log("action received");
+            switch (action.type) {
+                case "CREATE_NOTE":
+                    this.createNote();
+                    break;
+                case "EDIT_NOTE":
+                    this.editNote(action.id);
+                    break;
+                case "CANCEL_EDIT":
+                    this.cancelEdit(action.id);
+                    break;
+                case "SAVE_EDITS":
+                    this.saveEdits(action.id, action.text);
+                    break;
+                case "DELETE_NOTE":
+                    this.deleteNote(action.id);
+                    break;
+                default:
+                    return;
+            }
             this.emit('change');
         }
     }]);
@@ -9999,6 +10127,8 @@ var NoteStore = function (_EventEmitter) {
 }(EventEmitter);
 
 var noteStore = new NoteStore();
+
+_appDispatcher2.default.register(noteStore.handleActions.bind(noteStore));
 
 exports.default = noteStore;
 
@@ -10011,7 +10141,7 @@ exports = module.exports = __webpack_require__(90)();
 
 
 // module
-exports.push([module.i, "/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Correct the line height in all browsers.\n * 3. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\n/* Document\n   ========================================================================== */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  line-height: 1.15;\n  /* 2 */\n  -ms-text-size-adjust: 100%;\n  /* 3 */\n  -webkit-text-size-adjust: 100%;\n  /* 3 */ }\n\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/**\n * Add the correct display in IE 9-.\n */\narticle,\naside,\nfooter,\nheader,\nnav,\nsection {\n  display: block; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption,\nfigure,\nmain {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: sans-serif;\n  /* 1 */\n  font-size: 100%;\n  /* 1 */\n  line-height: 1.15;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails,\nmenu {\n  display: block; }\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item; }\n\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block; }\n\n/**\n * Add the correct display in IE.\n */\ntemplate {\n  display: none; }\n\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n[hidden] {\n  display: none; }\n\n/* Palette generated by Material Palette - materialpalette.com/indigo/red */\nbody {\n  background-color: #BDBDBD;\n  font-family: Tahoma, Geneva, sans-serif;\n  color: #212121; }\n\nh1, h2, h3, h4, h5 {\n  font-family: \"Palatino Linotype\", \"Book Antiqua\", Palatino, serif; }\n\nbutton {\n  cursor: pointer; }\n\n.sr-only {\n  position: absolute;\n  left: -10000px;\n  top: auto;\n  width: 1px;\n  height: 1px;\n  overflow: hidden; }\n\n.hidden {\n  display: none; }\n\nheader {\n  width: 100%;\n  height: 40px;\n  border-bottom: 2px solid #C5CAE9;\n  margin-bottom: 20px;\n  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5);\n  background-color: #3F51B5;\n  color: #FFFFFF; }\n  header .brand-header {\n    margin-top: 0;\n    margin-left: 20px; }\n\n.notes-container {\n  width: 100%;\n  padding: 0 5px;\n  box-sizing: border-box;\n  display: flex;\n  flex-wrap: wrap;\n  align-content: flex-start;\n  align-items: center; }\n  @media (max-width: 375px) {\n    .notes-container {\n      flex-direction: column; } }\n\n.add-note {\n  background: none;\n  border: none;\n  padding: 0;\n  margin-left: 10px;\n  height: 63px;\n  font-size: 80px;\n  color: #FFFFFF; }\n\n.note {\n  background-color: #fff;\n  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5);\n  flex-grow: 0;\n  margin: 0 5px 10px 5px;\n  padding: 0;\n  width: 300px;\n  overflow: hidden; }\n  @media (max-width: 375px) {\n    .note {\n      width: 90%;\n      flex-grow: 1; } }\n  .note .note-inner {\n    position: relative;\n    width: 100%;\n    height: 150px;\n    box-sizing: border-box; }\n    .note .note-inner p {\n      margin: 15px; }\n      .note .note-inner p textarea {\n        padding: 5px;\n        border: none;\n        resize: none; }\n    .note .note-inner .note-controls {\n      position: absolute;\n      right: 10px;\n      bottom: 10px; }\n      .note .note-inner .note-controls button {\n        color: #757575;\n        background-color: #C5CAE9;\n        border: none;\n        border-radius: 50%;\n        padding: 10px;\n        box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5); }\n        .note .note-inner .note-controls button:first-child {\n          margin-right: 10px; }\n        .note .note-inner .note-controls button:hover {\n          color: #FFFFFF;\n          background-color: #303F9F; }\n", ""]);
+exports.push([module.i, "/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Correct the line height in all browsers.\n * 3. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\n/* Document\n   ========================================================================== */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  line-height: 1.15;\n  /* 2 */\n  -ms-text-size-adjust: 100%;\n  /* 3 */\n  -webkit-text-size-adjust: 100%;\n  /* 3 */ }\n\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0; }\n\n/**\n * Add the correct display in IE 9-.\n */\narticle,\naside,\nfooter,\nheader,\nnav,\nsection {\n  display: block; }\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption,\nfigure,\nmain {\n  /* 1 */\n  display: block; }\n\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio,\nvideo {\n  display: inline-block; }\n\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none; }\n\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: sans-serif;\n  /* 1 */\n  font-size: 100%;\n  /* 1 */\n  line-height: 1.15;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails,\nmenu {\n  display: block; }\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item; }\n\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block; }\n\n/**\n * Add the correct display in IE.\n */\ntemplate {\n  display: none; }\n\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n[hidden] {\n  display: none; }\n\n/* Palette generated by Material Palette - materialpalette.com/indigo/red */\nbody {\n  background-color: #BDBDBD;\n  font-family: Tahoma, Geneva, sans-serif;\n  color: #212121; }\n\nh1, h2, h3, h4, h5 {\n  font-family: \"Palatino Linotype\", \"Book Antiqua\", Palatino, serif; }\n\nbutton {\n  cursor: pointer; }\n\n.sr-only {\n  position: absolute;\n  left: -10000px;\n  top: auto;\n  width: 1px;\n  height: 1px;\n  overflow: hidden; }\n\n.hidden {\n  display: none; }\n\nheader {\n  width: 100%;\n  height: 40px;\n  border-bottom: 2px solid #C5CAE9;\n  margin-bottom: 20px;\n  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5);\n  background-color: #3F51B5;\n  color: #FFFFFF; }\n  header .brand-header {\n    margin-top: 0;\n    margin-left: 20px; }\n\n.notes-container {\n  width: 100%;\n  padding: 0 5px;\n  box-sizing: border-box;\n  display: flex;\n  flex-wrap: wrap;\n  align-content: flex-start;\n  align-items: center; }\n  @media (max-width: 375px) {\n    .notes-container {\n      flex-direction: column; } }\n\n.add-note {\n  background: none;\n  border: none;\n  padding: 0;\n  margin-left: 10px;\n  height: 63px;\n  font-size: 80px;\n  color: #FFFFFF; }\n  .add-note:hover {\n    color: #3F51B5; }\n\n.note {\n  background-color: #fff;\n  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5);\n  flex-grow: 0;\n  margin: 0 5px 10px 5px;\n  padding: 0;\n  width: 300px;\n  overflow: hidden; }\n  @media (max-width: 375px) {\n    .note {\n      width: 90%;\n      flex-grow: 1; } }\n  .note .note-inner {\n    position: relative;\n    width: 100%;\n    height: 150px;\n    box-sizing: border-box; }\n    .note .note-inner p {\n      margin: 15px; }\n      .note .note-inner p textarea {\n        padding: 5px;\n        border: none;\n        resize: none; }\n    .note .note-inner .note-controls {\n      position: absolute;\n      right: 10px;\n      bottom: 10px; }\n      .note .note-inner .note-controls button {\n        color: #757575;\n        background-color: #C5CAE9;\n        border: none;\n        border-radius: 50%;\n        padding: 10px;\n        box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.5); }\n        .note .note-inner .note-controls button:first-child {\n          margin-right: 10px; }\n        .note .note-inner .note-controls button:hover {\n          color: #FFFFFF;\n          background-color: #303F9F; }\n", ""]);
 
 // exports
 
@@ -22911,6 +23041,333 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Dispatcher = __webpack_require__(191).Dispatcher;
+
+var appDispatcher = new Dispatcher();
+
+exports.default = appDispatcher;
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+module.exports.Dispatcher = __webpack_require__(192);
+
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule Dispatcher
+ * 
+ * @preventMunge
+ */
+
+
+
+exports.__esModule = true;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var invariant = __webpack_require__(1);
+
+var _prefix = 'ID_';
+
+/**
+ * Dispatcher is used to broadcast payloads to registered callbacks. This is
+ * different from generic pub-sub systems in two ways:
+ *
+ *   1) Callbacks are not subscribed to particular events. Every payload is
+ *      dispatched to every registered callback.
+ *   2) Callbacks can be deferred in whole or part until other callbacks have
+ *      been executed.
+ *
+ * For example, consider this hypothetical flight destination form, which
+ * selects a default city when a country is selected:
+ *
+ *   var flightDispatcher = new Dispatcher();
+ *
+ *   // Keeps track of which country is selected
+ *   var CountryStore = {country: null};
+ *
+ *   // Keeps track of which city is selected
+ *   var CityStore = {city: null};
+ *
+ *   // Keeps track of the base flight price of the selected city
+ *   var FlightPriceStore = {price: null}
+ *
+ * When a user changes the selected city, we dispatch the payload:
+ *
+ *   flightDispatcher.dispatch({
+ *     actionType: 'city-update',
+ *     selectedCity: 'paris'
+ *   });
+ *
+ * This payload is digested by `CityStore`:
+ *
+ *   flightDispatcher.register(function(payload) {
+ *     if (payload.actionType === 'city-update') {
+ *       CityStore.city = payload.selectedCity;
+ *     }
+ *   });
+ *
+ * When the user selects a country, we dispatch the payload:
+ *
+ *   flightDispatcher.dispatch({
+ *     actionType: 'country-update',
+ *     selectedCountry: 'australia'
+ *   });
+ *
+ * This payload is digested by both stores:
+ *
+ *   CountryStore.dispatchToken = flightDispatcher.register(function(payload) {
+ *     if (payload.actionType === 'country-update') {
+ *       CountryStore.country = payload.selectedCountry;
+ *     }
+ *   });
+ *
+ * When the callback to update `CountryStore` is registered, we save a reference
+ * to the returned token. Using this token with `waitFor()`, we can guarantee
+ * that `CountryStore` is updated before the callback that updates `CityStore`
+ * needs to query its data.
+ *
+ *   CityStore.dispatchToken = flightDispatcher.register(function(payload) {
+ *     if (payload.actionType === 'country-update') {
+ *       // `CountryStore.country` may not be updated.
+ *       flightDispatcher.waitFor([CountryStore.dispatchToken]);
+ *       // `CountryStore.country` is now guaranteed to be updated.
+ *
+ *       // Select the default city for the new country
+ *       CityStore.city = getDefaultCityForCountry(CountryStore.country);
+ *     }
+ *   });
+ *
+ * The usage of `waitFor()` can be chained, for example:
+ *
+ *   FlightPriceStore.dispatchToken =
+ *     flightDispatcher.register(function(payload) {
+ *       switch (payload.actionType) {
+ *         case 'country-update':
+ *         case 'city-update':
+ *           flightDispatcher.waitFor([CityStore.dispatchToken]);
+ *           FlightPriceStore.price =
+ *             getFlightPriceStore(CountryStore.country, CityStore.city);
+ *           break;
+ *     }
+ *   });
+ *
+ * The `country-update` payload will be guaranteed to invoke the stores'
+ * registered callbacks in order: `CountryStore`, `CityStore`, then
+ * `FlightPriceStore`.
+ */
+
+var Dispatcher = (function () {
+  function Dispatcher() {
+    _classCallCheck(this, Dispatcher);
+
+    this._callbacks = {};
+    this._isDispatching = false;
+    this._isHandled = {};
+    this._isPending = {};
+    this._lastID = 1;
+  }
+
+  /**
+   * Registers a callback to be invoked with every dispatched payload. Returns
+   * a token that can be used with `waitFor()`.
+   */
+
+  Dispatcher.prototype.register = function register(callback) {
+    var id = _prefix + this._lastID++;
+    this._callbacks[id] = callback;
+    return id;
+  };
+
+  /**
+   * Removes a callback based on its token.
+   */
+
+  Dispatcher.prototype.unregister = function unregister(id) {
+    !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.unregister(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
+    delete this._callbacks[id];
+  };
+
+  /**
+   * Waits for the callbacks specified to be invoked before continuing execution
+   * of the current callback. This method should only be used by a callback in
+   * response to a dispatched payload.
+   */
+
+  Dispatcher.prototype.waitFor = function waitFor(ids) {
+    !this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Must be invoked while dispatching.') : invariant(false) : undefined;
+    for (var ii = 0; ii < ids.length; ii++) {
+      var id = ids[ii];
+      if (this._isPending[id]) {
+        !this._isHandled[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Circular dependency detected while ' + 'waiting for `%s`.', id) : invariant(false) : undefined;
+        continue;
+      }
+      !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
+      this._invokeCallback(id);
+    }
+  };
+
+  /**
+   * Dispatches a payload to all registered callbacks.
+   */
+
+  Dispatcher.prototype.dispatch = function dispatch(payload) {
+    !!this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch.') : invariant(false) : undefined;
+    this._startDispatching(payload);
+    try {
+      for (var id in this._callbacks) {
+        if (this._isPending[id]) {
+          continue;
+        }
+        this._invokeCallback(id);
+      }
+    } finally {
+      this._stopDispatching();
+    }
+  };
+
+  /**
+   * Is this Dispatcher currently dispatching.
+   */
+
+  Dispatcher.prototype.isDispatching = function isDispatching() {
+    return this._isDispatching;
+  };
+
+  /**
+   * Call the callback stored with the given id. Also do some internal
+   * bookkeeping.
+   *
+   * @internal
+   */
+
+  Dispatcher.prototype._invokeCallback = function _invokeCallback(id) {
+    this._isPending[id] = true;
+    this._callbacks[id](this._pendingPayload);
+    this._isHandled[id] = true;
+  };
+
+  /**
+   * Set up bookkeeping needed when dispatching.
+   *
+   * @internal
+   */
+
+  Dispatcher.prototype._startDispatching = function _startDispatching(payload) {
+    for (var id in this._callbacks) {
+      this._isPending[id] = false;
+      this._isHandled[id] = false;
+    }
+    this._pendingPayload = payload;
+    this._isDispatching = true;
+  };
+
+  /**
+   * Clear bookkeeping used for dispatching.
+   *
+   * @internal
+   */
+
+  Dispatcher.prototype._stopDispatching = function _stopDispatching() {
+    delete this._pendingPayload;
+    this._isDispatching = false;
+  };
+
+  return Dispatcher;
+})();
+
+module.exports = Dispatcher;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createNote = createNote;
+exports.editNote = editNote;
+exports.cancelEdit = cancelEdit;
+exports.saveEdits = saveEdits;
+exports.deleteNote = deleteNote;
+
+var _appDispatcher = __webpack_require__(190);
+
+var _appDispatcher2 = _interopRequireDefault(_appDispatcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createNote() {
+    _appDispatcher2.default.dispatch({
+        type: "CREATE_NOTE"
+    });
+}
+
+function editNote(id) {
+    _appDispatcher2.default.dispatch({
+        type: "EDIT_NOTE",
+        id: id
+    });
+}
+
+function cancelEdit(id) {
+    _appDispatcher2.default.dispatch({
+        type: "CANCEL_EDIT",
+        id: id
+    });
+}
+
+function saveEdits(id, text) {
+    _appDispatcher2.default.dispatch({
+        type: "SAVE_EDITS",
+        id: id,
+        text: text
+    });
+}
+
+function deleteNote(id) {
+    _appDispatcher2.default.dispatch({
+        type: "DELETE_NOTE",
+        id: id
+    });
+}
 
 /***/ })
 /******/ ]);

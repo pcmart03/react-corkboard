@@ -19,7 +19,7 @@ export default class NoteEdit extends React.Component {
                     <p>
                         <textarea autoFocus value={this.state.text} onChange={this.handleChange} rows="5" cols="31" maxLength="150"></textarea>
                     </p>
-                    <EditControls id={this.props.id} isNew={this.props.isNew}/>
+                    <EditControls id={this.props.id} isNew={this.props.isNew} text={this.state.text}/>
                 </div>
             </div>);
     }

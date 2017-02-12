@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Actions from '../actions/actions.js';
 
 export default class EditControls extends React.Component {
     constructor(props) {
@@ -12,19 +13,31 @@ export default class EditControls extends React.Component {
 
 
     isNew() {
-        return this.props.isNew ? this.deleteItem : this.cancelChange;
+        if (this.props.isNew === "true") {
+            return (
+                <button role="cancel" onClick={this.deleteItem}>
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                    <span className="sr-only">Cancel</span>
+                </button>); 
+        }else {
+            return (
+                <button role="cancel" onClick={this.cancelChange}>
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                    <span className="sr-only">Cancel</span>
+                </button>)   
+        }
     }
 
     deleteItem() {
-
+        Actions.deleteNote(this.props.id);
     }
 
     cancelChange() {
-
+        Actions.cancelEdit(this.props.id);
     }
 
     saveChange() {
-
+        Actions.saveEdits(this.props.id, this.props.text);
     }
 
     render() {
@@ -34,10 +47,7 @@ export default class EditControls extends React.Component {
                     <i className="fa fa-check" aria-hidden="true"></i>
                     <span className="sr-only">Save</span>
                 </button>
-                <button role="cancel" onClick={this.isNew}>
-                    <i className="fa fa-times" aria-hidden="true"></i>
-                    <span className="sr-only">Cancel</span>
-                </button>
+                {this.isNew()}
             </div>
         );
     }

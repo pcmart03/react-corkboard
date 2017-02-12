@@ -19,6 +19,9 @@
   height: 63px;
   font-size: 80px;
   color: $primary-color-text;
+  &:hover {
+    color: $primary-color;
+  }
 }
 
 .note {

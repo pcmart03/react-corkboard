@@ -2,11 +2,16 @@ require('../scss/index.scss');
 
 import React from 'react';
 import { render } from 'react-dom';
+import AppHeader from './components/header.jsx';
 import NoteContainer from './components/note-container.jsx'
 
 class App extends React.Component {
     render() {
-        return (<NoteContainer />);
+        return (
+            <div>
+                <AppHeader />
+                <NoteContainer />
+            </div>);
     }
 }
 

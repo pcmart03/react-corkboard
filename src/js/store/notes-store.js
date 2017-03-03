@@ -40,6 +40,7 @@ class NoteStore extends EventEmitter {
         const note = {
             id,
             text: "",
+            color: "note-white",
             editMode: "true",
             isNew: "true"
         };
@@ -58,9 +59,10 @@ class NoteStore extends EventEmitter {
         this._saveNote(id, item);
     }
 
-    saveEdits(id, text){
+    saveEdits(id, text, color){
         const item = {
             id,
+            color,
             text: text.replace(/(<([^>]+)>)/ig,""),
             editMode: "false",
             isNew: "false"
@@ -84,7 +86,7 @@ class NoteStore extends EventEmitter {
                 this.cancelEdit(action.id);
                 break;
             case "SAVE_EDITS":
-                this.saveEdits(action.id, action.text);
+                this.saveEdits(action.id, action.text, action.color);
                 break;
             case "DELETE_NOTE":
                 this.deleteNote(action.id);

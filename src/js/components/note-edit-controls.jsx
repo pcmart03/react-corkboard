@@ -37,12 +37,19 @@ export default class EditControls extends React.Component {
     }
 
     saveChange() {
-        Actions.saveEdits(this.props.id, this.props.text);
+        Actions.saveEdits(this.props.id, this.props.text, this.props.color);
     }
 
     render() {
         return(
             <div className='note-controls'>
+                <select value={this.props.color} onChange={this.props.onColorChange}>
+                    <option value="white-note">White</option>
+                    <option value="yellow-note">Yellow</option>
+                    <option value="blue-note">Blue</option>
+                    <option value="pink-note">Pink</option>
+                    <option value="green-note">Green</option>
+                </select>
                 <button role="submit" onClick={this.saveChange}>
                     <i className="fa fa-check" aria-hidden="true"></i>
                     <span className="sr-only">Save</span>

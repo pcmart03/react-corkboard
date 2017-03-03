@@ -8,7 +8,7 @@ export default class Note extends React.Component {
 
     render() {
         return (
-        <div className="note" tabIndex="0">
+        <div className={`note ${this.props.color}`} tabIndex="0">
             <div className="note-inner">
                 <p>
                     { this.props.text }

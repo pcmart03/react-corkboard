@@ -65,14 +65,12 @@
       bottom: 10px;
 
       button {
-        color: $secondary-text-color;
-        background-color: $primary-color-light;
-        border: none;
+        background-color: inherit;
         border-radius: 50%;
+        border: none;
         padding: 10px;
-        @include appshadow($shadow);
-        &:first-child {
-          margin-right: 10px;
+        &:first-of-type {
+          margin-right: 5px;
         }
 
         &:hover {
@@ -80,6 +78,11 @@
           background-color: $primary-color-dark;
         }
       } //button
+
+      select {
+        margin-right: 5px;
+        background-color: inherit;
+      }
     } // note controls
   } // note-inner
 
@@ -89,3 +92,23 @@
     margin-left: auto;
   }
 } // note
+
+.white-note {
+  background-color: $note-white;
+}
+
+.yellow-note {
+  background-color: $note-yellow;
+}
+
+.blue-note {
+  background-color: $note-blue;
+}
+
+.pink-note {
+  background-color: $note-pink;
+}
+
+.green-note {
+  background-color: $note-green;
+}

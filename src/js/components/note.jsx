@@ -13,7 +13,7 @@ export default class Note extends React.Component {
                 <p>
                     { this.props.text }
                 </p>
-                <NoteControls id={this.props.id}/>
+                <NoteControls id={this.props.id} />
             </div>
         </div>
         );

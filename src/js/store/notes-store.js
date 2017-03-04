@@ -29,16 +29,18 @@ class NoteStore extends EventEmitter {
         this.storage.setItem(id, JSON.stringify(item));
     }
 
+
     getAll() {
         this._loadNotes();
         return this.notes;
     }
     
     createNote() {
-        console.log("dispatched")
         const id = "note" + String(Date.now());
+        const orderIndex = this.notes.length;
         const note = {
             id,
+            orderIndex,
             text: "",
             color: "note-white",
             editMode: "true",
@@ -46,6 +48,11 @@ class NoteStore extends EventEmitter {
         };
         this._saveNote(id, note);
     }
+
+    deleteNote(id){
+        this.storage.removeItem(id);
+    }
+
 
     editNote(id) {
         const item = this._getNote(id);
@@ -59,10 +66,11 @@ class NoteStore extends EventEmitter {
         this._saveNote(id, item);
     }
 
-    saveEdits(id, text, color){
+    saveEdits(id, text, color, orderIndex){
         const item = {
             id,
             color,
+            orderIndex,
             text: text.replace(/(<([^>]+)>)/ig,""),
             editMode: "false",
             isNew: "false"
@@ -70,8 +78,13 @@ class NoteStore extends EventEmitter {
         this._saveNote(id, item);
     }
 
-    deleteNote(id){
-        this.storage.removeItem(id);
+
+    setOrderIndex() {
+        const notes = [...this.notes] 
+        notes.forEach((note, index) => {
+            note.orderIndex = index;
+            this._saveNote(note.id, note);
+        });
     }
 
     handleActions(action){
@@ -86,7 +99,7 @@ class NoteStore extends EventEmitter {
                 this.cancelEdit(action.id);
                 break;
             case "SAVE_EDITS":
-                this.saveEdits(action.id, action.text, action.color);
+                this.saveEdits(action.id, action.text, action.color, action.orderIndex);
                 break;
             case "DELETE_NOTE":
                 this.deleteNote(action.id);

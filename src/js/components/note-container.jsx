@@ -30,9 +30,22 @@ export default class NoteContainer extends React.Component {
       const { notes } = this.state;
       const noteComponents = notes.map((note) => { 
         if (note.editMode === "false") {
-            return <Note key={note.id} text={note.text} id={note.id} color={note.color}/>
+            return <Note 
+                key={note.id} 
+                text={note.text} 
+                id={note.id} 
+                color={note.color} 
+                orderIndex={note.orderIndex}
+              />
         } else {
-            return <NoteEdit key={note.id} text={note.text} id={note.id} isNew={note.isNew} color={note.color}/>
+            return <NoteEdit 
+              key={note.id} 
+              text={note.text} 
+              id={note.id} 
+              isNew={note.isNew} 
+              color={note.color}
+              orderIndex={note.orderIndex}
+              />
         }
       });
       return (

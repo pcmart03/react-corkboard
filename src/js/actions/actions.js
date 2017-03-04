@@ -21,12 +21,13 @@ export function cancelEdit(id) {
     });
 }
 
-export function saveEdits(id, text, color) {
+export function saveEdits(id, text, color, orderIndex) {
     appDispatcher.dispatch({
         type: "SAVE_EDITS",
         id,
         text,
-        color
+        color,
+        orderIndex
     });
 }
 

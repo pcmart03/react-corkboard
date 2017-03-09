@@ -21,18 +21,26 @@ export function cancelEdit(id) {
     });
 }
 
-export function saveEdits(id, text, color) {
+export function saveEdits(id, text, color, orderIndex) {
     appDispatcher.dispatch({
         type: "SAVE_EDITS",
         id,
         text,
-        color
+        color,
+        orderIndex
     });
 }
 
 export function deleteNote(id) {
-        appDispatcher.dispatch({
+    appDispatcher.dispatch({
         type: "DELETE_NOTE",
         id
     });
+}
+
+export function reorderNotes(notes){
+    appDispatcher.dispatch({
+        type: "REORDER_NOTES",
+        notes
+    })
 }

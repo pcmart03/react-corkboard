@@ -37,7 +37,7 @@ export default class EditControls extends React.Component {
     }
 
     saveChange() {
-        Actions.saveEdits(this.props.id, this.props.text, this.props.color);
+        Actions.saveEdits(this.props.id, this.props.text, this.props.color, this.props.orderIndex);
     }
 
     render() {

@@ -32,6 +32,7 @@ export default class NoteEdit extends React.Component {
                         text={this.state.text} 
                         color={this.state.color} 
                         onColorChange={this.handleColorChange}
+                        orderIndex={this.props.orderIndex}
                     />
                 </div>
             </div>);

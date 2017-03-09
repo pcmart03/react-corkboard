@@ -32,8 +32,15 @@ export function saveEdits(id, text, color, orderIndex) {
 }
 
 export function deleteNote(id) {
-        appDispatcher.dispatch({
+    appDispatcher.dispatch({
         type: "DELETE_NOTE",
         id
     });
+}
+
+export function reorderNotes(notes){
+    appDispatcher.dispatch({
+        type: "REORDER_NOTES",
+        notes
+    })
 }

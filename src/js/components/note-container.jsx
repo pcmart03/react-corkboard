@@ -1,11 +1,15 @@
 import React  from 'react';
+import { DragDropContext } from 'react-dnd';
+import update from 'react/lib/update';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import noteStore from '../store/notes-store';
+import * as Actions from '../actions/actions.js';
 import Note from './note.jsx';
 import NoteEdit from './note-edit.jsx';
 import AddNoteButton from './add-note-button.jsx';
 
-export default class NoteContainer extends React.Component {
+class NoteContainer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -13,6 +17,8 @@ export default class NoteContainer extends React.Component {
         }
         
         this.handleChange = this.handleChange.bind(this);
+        this.dropNote = this.dropNote.bind(this);
+        this.moveNote = this.moveNote.bind(this);
     }
 
     componentWillMount() {
@@ -26,6 +32,23 @@ export default class NoteContainer extends React.Component {
         })
     }
 
+    dropNote() {
+      Actions.reorderNotes(this.state.notes);
+    }
+
+    moveNote(dragIndex, hoverIndex) {
+      const {notes} = this.state;
+      const dragNote = notes[dragIndex];
+      this.setState(update(this.state, {
+        notes: {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragNote],
+          ]
+        }
+      }));
+    }
+
     render() {
       const { notes } = this.state;
       const noteComponents = notes.map((note) => { 
@@ -36,6 +59,8 @@ export default class NoteContainer extends React.Component {
                 id={note.id} 
                 color={note.color} 
                 orderIndex={note.orderIndex}
+                moveNote = {this.moveNote}
+                dropNote = {this.dropNote}
               />
         } else {
             return <NoteEdit 
@@ -45,6 +70,8 @@ export default class NoteContainer extends React.Component {
               isNew={note.isNew} 
               color={note.color}
               orderIndex={note.orderIndex}
+              moveNote = {this.moveNote}
+              dropNote = {this.dropNote}
               />
         }
       });
@@ -57,3 +84,4 @@ export default class NoteContainer extends React.Component {
     }
 }
 
+export default DragDropContext(HTML5Backend)(NoteContainer);

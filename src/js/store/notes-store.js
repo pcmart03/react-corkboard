@@ -11,14 +11,17 @@ class NoteStore extends EventEmitter {
 
     _loadNotes(){
         let item;
-        this.notes = [];
+        const loadedNotes = [];
         if (this.storage.length > 0) {
             Object.keys(this.storage).forEach((key, index) => {
                 if (key.includes("note")) {
-                    item = this.storage.getItem(key);
-                    this.notes.push(JSON.parse(item));
+                    item = JSON.parse(this.storage.getItem(key));
+                    item.orderIndex = parseInt(item.orderIndex, 10);
+                    loadedNotes.push(item);
                 }
             });
+        // sort by orderIndex;
+        this.notes = loadedNotes.sort((a, b) => a.orderIndex - b.orderIndex)
         }
     }
     _getNote(id){
@@ -79,8 +82,8 @@ class NoteStore extends EventEmitter {
     }
 
 
-    setOrderIndex() {
-        const notes = [...this.notes] 
+    setOrderIndex(notesArray) {
+        const notes = [...notesArray] 
         notes.forEach((note, index) => {
             note.orderIndex = index;
             this._saveNote(note.id, note);
@@ -103,6 +106,9 @@ class NoteStore extends EventEmitter {
                 break;
             case "DELETE_NOTE":
                 this.deleteNote(action.id);
+                break;
+            case "REORDER_NOTES":
+                this.setOrderIndex(action.notes)
                 break;
             default:
                 return;

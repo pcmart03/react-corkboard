@@ -9,7 +9,6 @@ export default class AddNoteButton extends React.Component {
 
     createNote(){
         Actions.createNote();
-        console.log("clicked");
     }
     render() {
         return (

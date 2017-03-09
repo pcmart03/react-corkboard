@@ -31,12 +31,15 @@
 }
 
 .note {
+  z-index: 1;
+  transform: 'translate3d(0,0,0)';
   background-color: #fff;
   @include appshadow($shadow);
   flex-grow: 0;
   margin: 0 5px 10px 5px;
   padding: 0;
   width: 300px;
+  cursor: move;
 
   overflow: hidden;
   @media (max-width: 375px) {

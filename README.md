@@ -11,7 +11,8 @@ This project is tool for writing and short sticky notes. It allows users to crea
 You may [view a working demo of the app here.](https://pcmart03.github.io/react-corkboard/)
 
 ## TODOs
-
-- Delete all Notes Button
-- Add categories and filters
-- markdown formatting of notes
+- [x] Add color options
+- [x] Add Drand and Drop reorder
+- [] Delete all Notes Button
+- [] Add categories and filters
+- [] markdown formatting of notes
